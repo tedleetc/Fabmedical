@@ -3,25 +3,25 @@ kind: Deployment
 metadata:
   annotations:
     branch: refs/heads/main
-    commit: c6a6bf3147f87fa6a545df1b1db13f43950fcb2b
+    commit: 6c03dc43f4e8ba86f9ca81e00e8370b62b91acd2
     createdBy: tedleetc
-    deployTimestamp: "1647420944674"
-    deployment.kubernetes.io/revision: "3"
+    deployTimestamp: "1647421917369"
+    deployment.kubernetes.io/revision: "5"
     jobName: build-and-publish-docker-image
     kubectl.kubernetes.io/last-applied-configuration: |
       {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"web"},"name":"web","namespace":"ingress-demo"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"web"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":1},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"web"},"name":"web"},"spec":{"containers":[{"env":[{"name":"CONTENT_API_URL","value":"http://api:3001"}],"image":"fabmedical562999.azurecr.io/content-web","imagePullPolicy":"Always","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/","port":3000},"initialDelaySeconds":30,"periodSeconds":20,"timeoutSeconds":10},"name":"web","ports":[{"containerPort":3000,"hostPort":80,"protocol":"TCP"}],"resources":{"requests":{"cpu":"1000m","memory":"128Mi"}},"securityContext":{"privileged":false},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","imagePullSecrets":[{"name":"ingress-demo-secret"}],"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30}}}}
     provider: GitHub
     repository: tedleetc/Fabmedical
-    run: "1991677619"
-    runUri: https://github.com/tedleetc/Fabmedical/actions/runs/1991677619
+    run: "1991755118"
+    runUri: https://github.com/tedleetc/Fabmedical/actions/runs/1991755118
     workflow: content-web
   creationTimestamp: "2022-03-16T08:55:45Z"
-  generation: 4
+  generation: 7
   labels:
     app: web
   name: web
   namespace: ingress-demo
-  resourceVersion: "102817"
+  resourceVersion: "105037"
   uid: 248c4c54-4fc9-4241-87ae-12599893be42
 spec:
   progressDeadlineSeconds: 600
@@ -78,21 +78,22 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
 status:
-  availableReplicas: 4
+  availableReplicas: 3
   conditions:
-  - lastTransitionTime: "2022-03-16T09:03:34Z"
-    lastUpdateTime: "2022-03-16T09:03:34Z"
+  - lastTransitionTime: "2022-03-16T09:16:49Z"
+    lastUpdateTime: "2022-03-16T09:16:49Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
   - lastTransitionTime: "2022-03-16T08:55:45Z"
-    lastUpdateTime: "2022-03-16T09:06:13Z"
-    message: ReplicaSet "web-fd8b6759f" has successfully progressed.
-    reason: NewReplicaSetAvailable
+    lastUpdateTime: "2022-03-16T09:16:49Z"
+    message: ReplicaSet "web-fd8b6759f" is progressing.
+    reason: ReplicaSetUpdated
     status: "True"
     type: Progressing
-  observedGeneration: 4
-  readyReplicas: 4
-  replicas: 4
-  updatedReplicas: 4
+  observedGeneration: 7
+  readyReplicas: 3
+  replicas: 5
+  unavailableReplicas: 2
+  updatedReplicas: 3
